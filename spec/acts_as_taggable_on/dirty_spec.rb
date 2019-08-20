@@ -18,7 +18,7 @@ describe 'Dirty behavior of taggable objects' do
       end
 
       it 'should show changes of freshly initialized dirty object' do
-        pending if Gem.loaded_specs["rails"].version >= Gem::Version.new("6.0.0.beta1")
+        pending if ActiveRecord.gem_version >= Gem::Version.new("6.0.0.beta1")
         taggable = TaggableModel.find(@taggable.id)
         taggable.tag_list = 'one'
         expect(taggable.changes).to eq({'tag_list' => [['awesome', 'epic'], ['one']]})
